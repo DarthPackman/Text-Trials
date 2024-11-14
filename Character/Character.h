@@ -115,7 +115,7 @@ class Character {
      */
     std::vector< CharacterState* > myCharacterState;
 
-    AttackStae *myAttackStae;
+    AttackState *myAttackStae;
 
     DefendState *myDefendState;
 

@@ -1,5 +1,5 @@
-#ifndef AttackStae_h
-#define AttackStae_h
+#ifndef AttackState_h
+#define AttackState_h
 
 #include "CharacterState.h"
 #include "void.h"
@@ -38,4 +38,4 @@ class AttackState : public CharacterState {
     IdleState *myIdleState;
 };
 
-#endif // AttackStae_h
+#endif // AttackState_h
