@@ -3,12 +3,11 @@
 
 #include <vector>
 
-#include "IdleState.h"
-#include "void.h"
+#include "State.h"
 
 class Character;
 
-class CharacterState : virtual public IdleState {
+class CharacterState : {
 
  public:
 

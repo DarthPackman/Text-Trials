@@ -2,7 +2,7 @@
 #define AttackState_h
 
 #include "CharacterState.h"
-#include "void.h"
+
 
 class IdleState;
 class DefendState;
