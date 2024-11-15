@@ -41,12 +41,11 @@ Character createCharacter()
     // Get Character Type from User
     cout << "What do the people call you?" << endl;
     cout << "Enter Character Type: ";
-    cout << "1. The Unbreakable Sheild" << endl;
-    cout << "2. The Living Bastion" << endl;
-    cout << "3. The Colossal Crusher" << endl;
-    cout << "4. The Blinding Whirlwind" << endl;
-    cout << "5. The Immortal Juggernaut" << endl;
-    cout << "Enter Character Type: ";
+    cout << "1. The Unbreakable Sheild - A Higher Defense Adventurer who can brush off more damage." << endl;
+    cout << "2. The Living Bastion - A Faster Recovery Adventurer who can take a hit and get back into the fight." << endl;
+    cout << "3. The Colossal Crusher - A Higher Damage Adventurer who can hit enemies for more damage." << endl;
+    cout << "4. The Blinding Whirlwind - A Faster Cool Down Adventurer who can swing there weapon more often." << endl;
+    cout << "5. The Immortal Juggernaut - A Higher Health and Regen Adventurer who can take more hits." << endl;
     int type;
     cin >> type;
     switch (type)
