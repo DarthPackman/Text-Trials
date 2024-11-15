@@ -24,6 +24,10 @@ int main()
     Character playerCharacter = createCharacter();
     equipWeapon(playerCharacter);
     equipArmour(playerCharacter);
+    // Start The Journey
+    cout << "You are now ready to begin your journey, " << playerCharacter.getName() << "." << endl;
+    cout << "Good luck and may the odds be ever in your favor." << endl;
+    goOnJourney(playerCharacter);
     return 0;
 }
 
@@ -39,7 +43,7 @@ Character createCharacter()
     cin >> name;
 
     // Get Character Type from User
-    cout << "What do the people call you?" << endl;
+    cout << "How do people describe you?" << endl;
     cout << "Enter Character Type: ";
     cout << "1. The Unbreakable Sheild - A Higher Defense Adventurer who can brush off more damage." << endl;
     cout << "2. The Living Bastion - A Faster Recovery Adventurer who can take a hit and get back into the fight." << endl;
@@ -99,22 +103,28 @@ void equipWeapon(Character& playerCharacter)
     {
         case 1:
             playerCharacter.weapon = new Weapon("Sword", 1.5, 1);
+            cout << "I see you have a sword, a great tool to slash through your enemies." << endl;
             break;
         case 2:
             playerCharacter.weapon = new Weapon("Axe", 2.0, 1.5);
+            cout << "I see you have an axe, a mighty weapon to crush your enemies." << endl;
             break;
         case 3:
             playerCharacter.weapon = new Weapon("Mace", 1.75, 1.25);
+            cout << "I see you have a mace, a brutal weapon to break your enemies." << endl;
             break;
         case 4:
             playerCharacter.weapon = new Weapon("Spear", 1.25, 0.75);
+            cout << "I see you have a spear, a long weapon to keep your enemies at bay." << endl;
             break;
         case 5:
             playerCharacter.weapon = new Weapon("Dagger", 1.0, 0.5);
+            cout << "I see you have a dagger, a swift weapon to strike your enemies." << endl;
             break;
         default:
-            cout << "Invalid choice. Defaulting to Sword." << endl;
-            playerCharacter.weapon = new Weapon("Sword", 1.5, 1.0);
+            cout << "Invalid choice. Defaulting to Stick." << endl;
+            playerCharacter.weapon = new Weapon("Stick", 0.90, 0.40);
+            cout << "I see you have a stick, I guess that counts as a weapon." << endl;
             break;
     }
 }
@@ -139,22 +149,111 @@ void equipArmour(Character& playerCharacter)
     {
         case 1: // Leather Armor (default choice)
             playerCharacter.armour = new Armour("Leather Armor", 1.5, 1.0);
+            cout << "I see you have leather armor, a good balance of protection and mobility." << endl;
             break;
         case 2: // Plate Armor: Higher defense, longer recovery
             playerCharacter.armour = new Armour("Plate Armor", 2.25, 1.75);
+            cout << "I see you have plate armor, a heavy armor that offers excellent protection." << endl;
             break;
         case 3: // Scale Armor: Balanced between protection and recovery
             playerCharacter.armour = new Armour("Scale Armor", 2.0, 1.5);
+            cout << "I see you have scale armor, a sturdy armor that offers a good protection." << endl;
             break;
         case 4: // Chainmail: Good defense, balanced recovery
             playerCharacter.armour = new Armour("Chainmail", 1.75, 1.25);
+            cout << "I see you have chainmail, a flexible armor that provides good protection and mobility." << endl;
             break;
         case 5: // Cloth Robes: Low defense, quick recovery
             playerCharacter.armour = new Armour("Cloth Robes", 1.25, 0.75);
+            cout << "I see you have cloth robes, simple robes that offer minimal protection but allow for quick movement." << endl;
             break;
         default: // Invalid choice, default to Leather Armor
-            cout << "Invalid choice. Defaulting to Leather Armor." << endl;
-            playerCharacter.armour = new Armour("Leather Armor", 1.5, 1.0);
+            cout << "Invalid choice. Defaulting to no clothes." << endl;
+            playerCharacter.armour = new Armour("No Clothes", 0.90, 0.40);
+            cout << "I see you have no clothes, is the absence of armor a type of armor?" << endl;
+            break;
+    }
+}
+
+void goOnJourney(Character& playerCharacter)
+{
+    // Create a vector of enemies
+    vector<Character> enemies;
+    // Use A Randomizer to add select an enemy
+    enemies.push_back(createEnemy());
+
+    // Battle each enemy in the vector
+    for (int i = 0; i < playerCharacter.getLevel(); i++)
+    {
+        cout << "You encounter a " << enemies[i].getName() << "!" << endl;
+        battle(playerCharacter, enemies[i]);
+    }
+    playerCharacter.heal();
+}
+
+void battle(Character& playerCharacter, Character& Enemy)
+{
+    
+}
+
+Character createEnemy()
+{
+    // Randomly select an enemy type
+    int enemyType = rand(0, 101);
+    switch (enemyType)
+    {
+        //Case less then 50
+        case < 50:
+            enemyType = rand(0, 5);
+            switch (enemyType)
+            {
+                case 0:
+                    return new Character("Rat", new Offense(150, 100), new Defense(25, 1, 150, 100));
+                    break;
+                case 1:
+                    return new Character("Bat", new Offense(150, 100), new Defense(25, 1, 150, 100));
+                    break;
+                case 2:
+                    return new Character("Wolf", new Offense(150, 100), new Defense(25, 1, 150, 100));
+                    break;
+                case 3:
+                    return new Character("Spider", new Offense(150, 100), new Defense(25, 1, 150, 100));
+                    break;
+                case 4:
+                    return new Character("Snake", new Offense(150, 100), new Defense(25, 1, 150, 100));
+                    break;
+            }
+            break;
+        //Case less then 75
+        case < 75:
+            enemyType = rand(0, 2);
+            switch (enemyType)
+            {
+                case 0:
+                    return new Character("Goblin", new Offense(150, 100), new Defense(50, 1, 150, 100));
+                    break;
+                case 1:
+                    return new Character("Zombie", new Offense(150, 100), new Defense(150, 1, 150, 100));
+                    break;
+            }
+            break;
+        //Case less then 90
+        case < 90:
+            return new Character("Orc", new Offense(150, 100), new Defense(105, 1.25, 150, 100));
+            break;
+        //Case less then 95
+        case < 95:
+            return new Character("Troll", new Offense(150, 100), new Defense(110, 1.5, 150, 100));
+            break;
+        //Case less then 100
+        case < 100:
+            return new Character("Dragon", new Offense(150, 100), new Defense(125, 2, 150, 100));
+            break;
+        //Case 100
+        case 100:
+            return new Character("Demon", new Offense(150, 100), new Defense(150, 3, 150, 100));
+            break;
+        default:
             break;
     }
 }
