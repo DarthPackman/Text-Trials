@@ -19,7 +19,7 @@ using namespace std;
 int main() 
 {
     //A Flavorful Welcome Message
-    cout << "Welcome to the Text Trails, who knows where your adventure might lead." << endl;
+    cout << "Welcome to the Text Trials, who knows where your adventure might lead." << endl;
     // Create Character
     Character playerCharacter = createCharacter();
     equipWeapon(playerCharacter);
@@ -29,13 +29,54 @@ int main()
 
 Character createCharacter()
 {
-    cout << "Before we start we will need to know your name adventurer." << endl;
-    // Create Empty Character
     Character playerCharacter;
+    cout << "Before you venture out I will need to know more about you." << endl;
 
     // Get Character Name from User
+    cout << "What should I call you adventurer?" << endl;
     cout << "Enter Character Name: ";
-    playerCharacter.setName(cin);
+    string name;
+    cin >> name;
+
+    // Get Character Type from User
+    cout << "What do the people call you?" << endl;
+    cout << "Enter Character Type: ";
+    cout << "1. The Unbreakable Sheild" << endl;
+    cout << "2. The Living Bastion" << endl;
+    cout << "3. The Colossal Crusher" << endl;
+    cout << "4. The Blinding Whirlwind" << endl;
+    cout << "5. The Immortal Juggernaut" << endl;
+    cout << "Enter Character Type: ";
+    int type;
+    cin >> type;
+    switch (type)
+    {
+        case 1: // Defense Tank
+            playerCharacter = new Character(name, new Offense(100, 100), new Defense(100, 1, 115, 100));
+            cout << "Welcome to the Text Trials, " << name << ", The Unbreakable Shield." << endl;
+            break;
+        case 2: // Recovery Tank
+            playerCharacter = new Character(name, new Offense(100, 100), new Defense(115, 1, 100, 90));
+            cout << "Welcome to the Text Trials, " << name << ", The Living Bastion." << endl;
+            break;
+        case 3: // Heavy Hitter
+            playerCharacter = new Character(name, new Offense(115, 100), new Defense(100, 1, 100, 100));
+            cout << "Welcome to the Text Trials, " << name << ", The Colossal Crusher." << endl;
+            break;
+        case 4: // Fast Hitter
+            playerCharacter = new Character(name, new Offense(100, 85), new Defense(100, 1, 100, 100));
+            cout << "Welcome to the Text Trials, " << name << ", The Blinding Whirlwind." << endl;
+            break;
+        case 5: // High HP/Regen
+            playerCharacter = new Character(name, new Offense(100, 100), new Defense(110, 1.5, 100, 100));
+            cout << "Welcome to the Text Trials, " << name << ", The Immortal Juggernaut." << endl;
+            break;
+        default: // Default
+            cout << "Invalid choice. Defaulting to The Average Joe." << endl;
+            playerCharacter = new Character(name, new Offense(105, 100), new Defense(105, 1, 105, 100));
+            cout << "Welcome to the Text Trials, " << name << ", The Average Joe." << endl;
+            break;
+    }
     return playerCharacter;
 }
 
