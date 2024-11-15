@@ -168,7 +168,7 @@ void equipArmour(Character& playerCharacter)
             cout << "I see you have cloth robes, simple robes that offer minimal protection but allow for quick movement." << endl;
             break;
         default: // Invalid choice, default to Leather Armor
-            cout << "Invalid choice. Defaulting to no clothes." << endl;
+            cout << "Invalid choice. Defaulting to No Clothes." << endl;
             playerCharacter.armour = new Armour("No Clothes", 0.90, 0.40);
             cout << "I see you have no clothes, is the absence of armor a type of armor?" << endl;
             break;
@@ -202,7 +202,6 @@ Character createEnemy()
     int enemyType = rand(0, 101);
     switch (enemyType)
     {
-        //Case less then 50
         case < 50:
             enemyType = rand(0, 5);
             switch (enemyType)
@@ -224,7 +223,6 @@ Character createEnemy()
                     break;
             }
             break;
-        //Case less then 75
         case < 75:
             enemyType = rand(0, 2);
             switch (enemyType)
@@ -237,19 +235,15 @@ Character createEnemy()
                     break;
             }
             break;
-        //Case less then 90
         case < 90:
             return new Character("Orc", new Offense(150, 100), new Defense(105, 1.25, 150, 100));
             break;
-        //Case less then 95
         case < 95:
             return new Character("Troll", new Offense(150, 100), new Defense(110, 1.5, 150, 100));
             break;
-        //Case less then 100
         case < 100:
             return new Character("Dragon", new Offense(150, 100), new Defense(125, 2, 150, 100));
             break;
-        //Case 100
         case 100:
             return new Character("Demon", new Offense(150, 100), new Defense(150, 3, 150, 100));
             break;
