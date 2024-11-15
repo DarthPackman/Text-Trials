@@ -11,7 +11,7 @@
 #include "void.h"
 
 class CharacterState;
-class AttackStae;
+class AttackState;
 class DefendState;
 class IdleState;
 
