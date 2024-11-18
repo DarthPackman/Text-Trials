@@ -15,7 +15,7 @@ class Offense {
 	float getDamage();
     float getCoolDown();
 
- public:
+ private:
  	float damage;
  	float coolDown;
 };

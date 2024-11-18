@@ -3,25 +3,33 @@
 #include <string>
 using namespace std;
 
-Offense::Offense() : damage(1), coolDown(1) {}
-Offense::Offense(float dam, float cd) : damage(dam), coolDown(cd) {}
-
-float getDamage()
+class Offense
 {
-	return damage;
-}
+	private:
+		float damage;
+ 		float coolDown;
+ 	
+ 	public:
+ 		Offense();
+ 		Offense(float dam, float cd);
+ 		
+ 		float getDamage()
+		{
+			return damage;
+		}
 
-float getCoolDown()
-{
-	return coolDown;
-}
+		float getCoolDown()
+		{
+			return coolDown;
+		}
 
-void levelUpDamage()
-{
+		void levelUpDamage()
+		{
 	
-}
+		}
 
-void levelUpCoolDown()
-{
+		void levelUpCoolDown()
+		{
 	
-}
+		}
+};
