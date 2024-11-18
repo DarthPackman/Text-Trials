@@ -4,9 +4,9 @@
 #include <string>
 using namespace std;
 
-class Armour{
+class Armour 
+{
 	private:
-		//data members
 		string name;
 		float defenseMod;
 		float recoveryMod;

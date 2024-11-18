@@ -1,23 +1,44 @@
 #include "Armour.h"
-
 #include <string>
 using namespace std;
 
-//default constructor
-Armour::Armour() : name("noArmour"), defenseMod(1), recoveryMod(1) {}
-//parameter constructor
-Armour::Armour(string nm, float dm, float rm) : name(nm), defenseMod(dm), recoveryMod(rm) {}
+class Armour
+{
+	private:
+		string name;
+		float defenseMod;
+		float recoveryMod;
 
-//getters
-string getName()
-{
-	return name;
-}
-float getDefenseMod()
-{
-	return defenseMod;
-}
-float getRecoveryMod()
-{
-	return recoveryMod;
-}
+	public:
+		// constructors
+		Armour();
+		Armour(string nm, float dm, float rm);
+		
+		// setters
+		void setName(string str)
+		{
+			name = str;
+		}
+		void setDefenseMod(float dm)
+		{
+			defenseMod = dm;
+		}
+		void setRecoveryMod(float rm)
+		{
+			recoveryMod = rm;
+		}
+
+		// getters
+		string getName()
+		{
+			return name;
+		}
+		float getDefenseMod()
+		{
+			return defenseMod;
+		}
+		float getRecoveryMod()
+		{
+			return recoveryMod;
+		}
+};

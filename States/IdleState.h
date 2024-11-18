@@ -21,9 +21,9 @@ class IdleState : public CharacterState {
  public:
 
     /**
-     * @element-type AttackStae
+     * @element-type AttackState
      */
-    AttackStae *myAttackStae;
+    AttackStae *myAttackState;
 
     /**
      * @element-type DefendState
@@ -31,9 +31,9 @@ class IdleState : public CharacterState {
     DefendState *myDefendState;
 
     /**
-     * @element-type AttackStae
+     * @element-type AttackState
      */
-    AttackStae *myAttackStae;
+    AttackStae *myAttackState;
 
     Character *myCharacter;
 };

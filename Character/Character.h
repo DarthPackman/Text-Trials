@@ -27,6 +27,6 @@ class Character
 		string getName();
 		void Attack(Offense off, Weapon wep, Character target);
 		void Defense(Defense def, Armour arm);
-}
+};
 
 #endif
