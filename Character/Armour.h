@@ -1,38 +1,23 @@
-#ifndef Armour_h
-#define Armour_h
+#ifndef ARMOUR_h
+#define ARMOUR_h
 
-#include "Float.h"
+#include <string>
+using namespace std;
 
-class Character;
-
-class Armour {
-
- public:
-
-    virtual String getName();
-
-    virtual Float getDamageMod();
-
-    virtual Float getRecoveryMod();
-
- public:
-    String name;
-    Float defenseMod;
-    Float recoveryMod;
-
- public:
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    Character *myCharacter;
+class Armour{
+	private:
+		//data members
+		string name;
+		float defenseMod;
+		float recoveryMod;
+		
+	public:
+		Armour();
+		Armour(string nm, float dm, float rm);
+		
+		string getName();
+		float getDefenseMod();
+		float getRecoveryMod();
 };
 
 #endif // Armour_h

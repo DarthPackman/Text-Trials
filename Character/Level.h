@@ -1,47 +1,20 @@
 #ifndef Level_h
 #define Level_h
 
-#include "void.h"
-
-class Character;
-
 class Level {
-
- public:
-
-    virtual void addExp(void  Integer);
-
-    virtual void levelUp();
-
-    virtual Integer getLevel();
-
-    virtual Integer getExperience();
-
-    virtual Integer getNextLevel();
-
- public:
-    Integer level;
-    Integer experience;
-    Integer nextlevel;
-
- public:
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    Character *myCharacter;
+	private:
+		int level;
+		int experience;
+		int nextLevel;
+	
+	public:
+		Level();
+		Level(int lvl, int exp, int nxt);
+		int getLevel();
+		int getExperience();
+		int getNextLevel();
+		void addExp(int exp);
+		void levelUp();
 };
 
-#endif // Level_h
+#endif

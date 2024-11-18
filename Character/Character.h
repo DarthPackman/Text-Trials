@@ -2,124 +2,35 @@
 #define Character_h
 
 #include <vector>
-
-#include "Armour.h"
-#include "Defense.h"
-#include "Level.h"
-#include "Offense.h"
-#include "Weapon.h"
-#include "void.h"
-
-class CharacterState;
-class AttackStae;
-class DefendState;
-class IdleState;
+#include "Armour.cpp"
+#include "Defense.cpp"
+#include "Level.cpp"
+#include "Offense.cpp"
+#include "Weapon.cpp"
 
 class Character {
-
- public:
-
-    virtual void setName(void  String);
-
-    virtual String getName();
-
-    virtual void Attack(void  Offense, void  Weapon, void  Character);
-
-    virtual void Defend(void  Defense, void  Armour);
-
- public:
-    Offense offense;
-    Defense defense;
-    Level level;
-    Weapon weapon;
-    Armour armour;
-
- private:
-    String name;
-
- public:
-
-    /**
-     * @element-type Level
-     */
-    Level *myLevel;
-
-    /**
-     * @element-type Armour
-     */
-    Armour *myArmour;
-
-    /**
-     * @element-type Offense
-     */
-    Offense *myOffense;
-
-    /**
-     * @element-type Defense
-     */
-    Defense *myDefense;
-
-    /**
-     * @element-type Weapon
-     */
-    Weapon *myWeapon;
-
-    /**
-     * @element-type Level
-     */
-    Level *myLevel;
-
-    /**
-     * @element-type Armour
-     */
-    Armour *myArmour;
-
-    /**
-     * @element-type Offense
-     */
-    Offense *myOffense;
-
-    /**
-     * @element-type Defense
-     */
-    Defense *myDefense;
-
-    /**
-     * @element-type Weapon
-     */
-    Weapon *myWeapon;
-
-    /**
-     * @element-type Level
-     */
-    Level *myLevel;
-
-    /**
-     * @element-type Armour
-     */
-    std::vector< Armour* > myArmour;
-
-    /**
-     * @element-type Weapon
-     */
-    std::vector< Weapon* > myWeapon;
-
-    Defense myDefense;
-
-    Offense myOffense;
-
-    Level myLevel;
-
-    /**
-     * @element-type CharacterState
-     */
-    std::vector< CharacterState* > myCharacterState;
-
-    AttackStae *myAttackStae;
-
-    DefendState *myDefendState;
-
-    IdleState *myIdleState;
+	private:
+		//data members
+		string name;
+		Offense offense;
+		Defense defense;
+		Level level;
+		Weapon weapon;
+		Armour armour;
+		
+	public:
+		//constructors
+		Character();
+		Character(string nm, Offense off, Defense def, Level lvl, Weapon wep, Armour arm);
+		//setters
+		void setName(string str);
+		void setWeapon(Weapon wp);
+		void setArmour(Armour arm);
+		
+		//getters
+		string getName();
+		void Attack(Offense off, Weapon wep, Character target);
+		void Defense(Defense def, Armour arm);
 };
 
-#endif // Character_h
+#endif

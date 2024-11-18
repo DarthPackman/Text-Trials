@@ -1,45 +1,23 @@
 #ifndef Offense_h
 #define Offense_h
 
-#include "Float.h"
-#include "void.h"
-
-class Character;
+#include <string>
+using namespace std;
 
 class Offense {
 
  public:
+ 	Offense();
+ 	Offense(float dam, float cd);
 
-    virtual void levelUpDamage();
-
-    virtual void levelUpSpeed();
-
-    virtual void levelUpCoolDown();
-
-    virtual Float getDamage();
-
-    virtual Float getSpeed();
-
-    virtual Float getCoolDown();
+    void levelUpDamage();
+	void levelUpCoolDown();
+	float getDamage();
+    float getCoolDown();
 
  public:
-    Float damage;
-    Float speed;
-    Float coolDown;
-
- public:
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    Character *myCharacter;
+ 	float damage;
+ 	float coolDown;
 };
 
-#endif // Offense_h
+#endif

@@ -1,41 +1,26 @@
-#ifndef Weapon_h
-#define Weapon_h
+#ifndef WEAPON_H
+#define WEAPON_H
 
-#include "Float.h"
+#include <string>
+using namespace std;
 
-class Character;
-
-class Weapon {
-
- public:
-
-    virtual String getName();
-
-    virtual Float getDamageMod();
-
-    virtual Float getSpeedMod();
-
-    virtual Float getCoolDownMod();
-
- public:
-    String name;
-    Float damageMod;
-    Float speedMod;
-    Float coolDownMod;
-
- public:
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    /**
-     * @element-type Character
-     */
-    Character *myCharacter;
-
-    Character *myCharacter;
+class Weapon
+{
+	private:
+		//data members
+		string name;
+		float damageMod;
+		float coolDownMod;
+		
+	public:
+		//constructors
+		Weapon();
+		Weapon(string nm, float dm, float cdm);
+		
+		//getters
+		string getName();
+		float getDamageMod();
+		float getCoolDownMod();
 };
 
-#endif // Weapon_h
+#endif
