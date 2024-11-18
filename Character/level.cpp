@@ -1,44 +1,38 @@
+#include "Level.h"
+
+#include <string>
 using namespace std;
 
-class Level
+Level::Level() : level(1), experience(0), nextLevel(100) {}
+
+Level::Level(int lvl, int exp, int nxt) : level(lvl), experience(exp), nextLevel(nxt) {}
+
+int getLevel()
 {
-	private:
-		//data members
-		int level;
-		int experience;
-		int nextLevel;
-		
-	public:
-		//getters
-		int getLevel()
-		{
-			return level;
-		}
-		int getExperience()
-		{
-			return experience;
-		}
-		int getNextLevel()
-		{
-			return nextLevel;
-		}
-		
-		//add Exp function
-		void addExp(int exp)
-		{
-			experience += exp;
-			
-			if (experience >= nextLevel)
-			{
-				levelUp();
-			}
-		}
-		
-		//level Up function
-		void levelUp()
-		{
-			//do level up
-			//experience = 0
-			//nextLevel * 1.5
-		}
+	return level;
+}
+int getExperience()
+{
+	return experience;
+}
+int getNextLevel()
+{
+	return nextLevel;
+}
+
+void addExp(int exp)
+{
+	experience += exp;
+	
+	if (experience >= nextLevel)
+	{
+		levelUp();
+	}
+}
+
+void levelUp()
+{
+	experience = 0;
+	//make nextLevel higher
+	//do level up things
 }

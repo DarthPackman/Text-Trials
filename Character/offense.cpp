@@ -1,42 +1,27 @@
+#include "Offense.h"
+
+#include <string>
 using namespace std;
 
-class Offense
+Offense::Offense() : damage(1), coolDown(1) {}
+Offense::Offense(float dam, float cd) : damage(dam), coolDown(cd) {}
+
+float getDamage()
 {
-	private:
-		//data members
-		float damage;
-		float coolDown;
-		
-	public:
-		//constructors
-		Offense()
-		{
-			damage = 1;
-			coolDown = 1;
-		}
-		Offense(float dam, float cd)
-		{
-			damage = dam;
-			coolDown = cd;
-		}
-		
-		//getters
-		float getDamage()
-		{
-			return damage;
-		}
-		float getCoolDown()
-		{
-			return coolDown;
-		}
-		
-		//level up functions
-		void levelUpDamage()
-		{
-			
-		}
-		void levelUpCoolDown()
-		{
-			
-		}
+	return damage;
+}
+
+float getCoolDown()
+{
+	return coolDown;
+}
+
+void levelUpDamage()
+{
+	
+}
+
+void levelUpCoolDown()
+{
+	
 }
