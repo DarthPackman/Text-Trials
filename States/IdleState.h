@@ -4,7 +4,7 @@
 #include "CharacterState.h"
 #include "void.h"
 
-class AttackStae;
+class AttackState;
 class DefendState;
 class Character;
 
