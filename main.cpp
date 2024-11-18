@@ -177,6 +177,8 @@ void equipArmour(Character& playerCharacter)
 
 void goOnJourney(Character& playerCharacter)
 {
+    int levelCount = playerCharacter.level.getLevel();
+    cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
     // Create a vector of enemies
     vector<Character> enemies;
     // Use A Randomizer to add select an enemy
@@ -185,10 +187,11 @@ void goOnJourney(Character& playerCharacter)
     // Battle each enemy in the vector
     for (int i = 0; i < playerCharacter.getLevel(); i++)
     {
-        cout << "You encounter a " << enemies[i].getName() << "!" << endl;
+        cout << "In room " << i << ", you encounter a " << enemies[i].getName() << "!" << endl;
         battle(playerCharacter, enemies[i]);
     }
-    playerCharacter.heal();
+    cout << "You have cleared the dungeon and found a chest with a health potion inside." << endl;
+    playerCharacter.defense.heal(getLevel() * 10);
 }
 
 void battle(Character& playerCharacter, Character& Enemy)
