@@ -6,7 +6,8 @@ using namespace std;
 class Defense
 {
 	private:
-		int healthPoints;
+		int currentHealthPoints;
+		int maxHealthPoints;
 		float regeneration;
 		float recovery;
 		float defense;
@@ -17,7 +18,7 @@ class Defense
 		
 		int getHealthPoints()
 		{
-			return healthPoints;
+			return currentHealthPoints;
 		}
 		float getRegeneration()
 		{
@@ -35,14 +36,22 @@ class Defense
 		//Take & heal methods
 		void TakeDamage(int damage)
 		{
-			healthPoints -= damage;
+			currentHealthPoints -= damage;
 			cout << "You have taken " << damage << " damage.";
 		}
 		
 		void Heal(int heals)
 		{
-			healthPoints += heals;
-			cout << "You have healed for " << heals << " hit points.";
+			currentHealthPoints += heals;
+			if (currentHealthPoints > maxHealthPoints)
+			{
+				currentHealthPoints = maxHealthPoints;
+				cout << "You have healed to full health.";
+			}
+			else
+			{
+				cout << "You have healed for " << heals << " hit points.";
+			}
 		}
 		void Regenerate()
 		{

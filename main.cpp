@@ -59,24 +59,24 @@ Character createCharacter()
     switch (type)
     {
         case 1: // Defense Tank
-            playerCharacter = Character(name, Offense(100, 100), Defense(100, 1, 115, 100));
+            playerCharacter = Character(name, Offense(100, 100), Defense(500, 1, 120, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Unbreakable Shield." << endl;
             break;
         case 2: // Recovery Tank
-            playerCharacter = Character(name, Offense(100, 100), Defense(115, 1, 100, 90));
+            playerCharacter = Character(name, Offense(100, 100), Defense(500, 1, 100, 80));
             cout << "Welcome to the Text Trials, " << name << ", The Living Bastion." << endl;
             break;
         case 3: // Heavy Hitter
-            playerCharacter = Character(name, Offense(115, 100), Defense(100, 1, 100, 100));
+            playerCharacter = Character(name, Offense(120, 100), Defense(500, 1, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Colossal Crusher." << endl;
             break;
         case 4: // Fast Hitter
-            playerCharacter = Character(name, Offense(100, 85), Defense(100, 1, 100, 100));
+            playerCharacter = Character(name, Offense(100, 80), Defense(500, 1, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Blinding Whirlwind." << endl;
             break;
         default: // Default
             cout << "Invalid choice. Defaulting to The Average Joe." << endl;
-            playerCharacter = Character(name, Offense(105, 100), Defense(105, 1, 105, 100));
+            playerCharacter = Character(name, Offense(110, 100), Defense(500, 1, 110, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Average Joe." << endl;
             break;
     }
@@ -211,15 +211,15 @@ Character createEnemy()
         switch (subType)
         {
             case 0:
-                return Character("Rat", Offense(150, 100), Defense(25, 1, 150, 100));
+                return Character("Rat", Offense(150, 100), Defense(125, 1, 150, 100));
             case 1:
-                return Character("Bat", Offense(150, 100), Defense(25, 1, 150, 100));
+                return Character("Bat", Offense(150, 100), Defense(125, 1, 150, 100));
             case 2:
-                return Character("Wolf", Offense(150, 100), Defense(25, 1, 150, 100));
+                return Character("Wolf", Offense(150, 100), Defense(125, 1, 150, 100));
             case 3:
-                return Character("Spider", Offense(150, 100), Defense(25, 1, 150, 100));
+                return Character("Spider", Offense(150, 100), Defense(125, 1, 150, 100));
             case 4:
-                return Character("Snake", Offense(150, 100), Defense(25, 1, 150, 100));
+                return Character("Snake", Offense(150, 100), Defense(125, 1, 150, 100));
         }
     }
     else if (enemyType < 75)
@@ -228,27 +228,27 @@ Character createEnemy()
         switch (subType)
         {
             case 0:
-                return Character("Goblin", Offense(150, 100), Defense(50, 1, 150, 100));
+                return Character("Goblin", Offense(150, 100), Defense(250, 1, 150, 100));
             case 1:
-                return Character("Zombie", Offense(150, 100), Defense(150, 1, 150, 100));
+                return Character("Zombie", Offense(150, 100), Defense(250, 1, 150, 100));
         }
     }
     else if (enemyType < 90)
     {
-        return Character("Orc", Offense(150, 100), Defense(105, 1.25, 150, 100));
+        return Character("Orc", Offense(150, 100), Defense(500, 1.25, 150, 100));
     }
     else if (enemyType < 95)
     {
-        return Character("Troll", Offense(150, 100), Defense(110, 1.5, 150, 100));
+        return Character("Troll", Offense(150, 100), Defense(750, 1.5, 150, 100));
     }
     else if (enemyType < 100)
     {
-        return Character("Dragon", Offense(150, 100), Defense(125, 2, 150, 100));
+        return Character("Dragon", Offense(150, 100), Defense(1000, 2, 150, 100));
     }
     else if (enemyType == 100)
     {
-        return Character("Demon", Offense(150, 100), Defense(150, 3, 150, 100));
+        return Character("Demon", Offense(150, 100), Defense(1500, 3, 150, 100));
     }
 
-    return Character("Mysterious Being", Offense(150, 100), Defense(150, 1, 150, 100));
+    return Character("Mysterious Being", Offense(150, 100), Defense(2000, 1, 150, 100));
 }
