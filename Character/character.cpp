@@ -42,14 +42,42 @@ class Character
 		{
 			return name;
 		}
+
+		Offense getOffense()
+		{
+			return offense;
+		}
+
+		Defense getDefense()
+		{
+			return defense;
+		}
+
+		Level getLevel()
+		{
+			return level;
+		}
+
+		Weapon getWeapon()
+		{
+			return weapon;
+		}
+
+		Armour getArmour()
+		{
+			return armour;
+		}
 		
 		// combat
 		void Attack(Offense off, Weapon wep, Character target)
 		{
-			//Something
+			int damageToDeal = off.getDamage() * wep.getDamageMod();
+			target.Defend(damageToDeal);
 		}
-		void Defense(Defense def, Armour arm)
+
+		void Defend(int damage)
 		{
-			//Something
+			int damageToTake = damage - (defense.getDefense() * armour.getDefenseMod());
+			defense.TakeDamage(damageToTake);
 		}
 };

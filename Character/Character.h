@@ -20,13 +20,19 @@ class Character
 	public:
 		Character();
 		Character(string nm, Offense off, Defense def, Level lvl, Weapon wep, Armour arm);
+		Character(string nm, Offense off, Defense def);
 		void setName(string str);
 		void setWeapon(Weapon wp);
 		void setArmour(Armour arm);
 		
 		string getName();
+		Offense getOffense();
+		Defense getDefense();
+		Level getLevel();
+		Weapon getWeapon();
+		Armour getArmour();
 		void Attack(Offense off, Weapon wep, Character target);
-		void Defense(Defense def, Armour arm);
+		void Defend(Defense def, Armour arm);
 };
 
 #endif

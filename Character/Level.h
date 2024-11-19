@@ -10,10 +10,11 @@ class Level {
 	public:
 		Level();
 		Level(int lvl, int exp, int nxt);
-		int getLevel();
+		int getCurrentLevel();
 		int getExperience();
 		int getNextLevel();
-		void addExp(int exp);
+		
+		void addExp(int exp, Character& playerCharacter);
 		void levelUp();
 };
 

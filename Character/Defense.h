@@ -21,7 +21,8 @@ class Defense {
 		float getDefense();
 		
 		//heal methods
-		void Heal(int add);
+		void TakeDamage(int damage);
+		void Heal(int heals);
 		void Regenerate();
 		
 		//level up methods

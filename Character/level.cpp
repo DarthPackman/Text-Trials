@@ -14,7 +14,7 @@ class Level
 		Level();
 		Level(int lvl, int exp, int nxt);
 		
-		int getLevel()
+		int getCurrentLevel()
 		{
 			return level;
 		}
@@ -27,20 +27,60 @@ class Level
 			return nextLevel;
 		}
 
-		void addExp(int exp)
+		void addExp(int exp, Character& playerCharacter)
 		{
 			experience += exp;
 	
 			if (experience >= nextLevel)
 			{
-				levelUp();
+				levelUp(playerCharacter);
 			}
 		}
 
-		void levelUp()
+		void levelUp(Character& playerCharacter)
 		{
 			experience = 0;
-			//make nextLevel higher
-			//do level up things
+			nextLevel = nextLevel * 1.5;
+			level += 1;
+
+			int statsToLevel = rand() % 10;
+			if (statsToLevel > 3)
+			{
+				statsToLevel = 2;
+			}
+			else if (statsToLevel < 7)
+			{
+				statsToLevel = 4;
+			}
+			else
+			{
+				statsToLevel = 3;
+			}
+
+			for (int i = 0; i < statsToLevel; i++)
+			{
+				int stat = rand() % 6;
+				switch (stat)
+				{
+					case 0:
+						playerCharacter.getDefense().levelUpHealthPoints();
+						break;
+					case 1:
+						playerCharacter.getDefense().levelUpRegeneration();
+						break;
+					case 2:
+						playerCharacter.getDefense().levelUpRecovery();
+						break;
+					case 3:
+						playerCharacter.getDefense().levelUpDefense();
+						break;
+					case 4:
+						playerCharacter.getOffense().levelUpDamage();
+						break;
+					case 5:
+						playerCharacter.getOffense().levelUpCoolDown();
+						break;
+				}
+			}
 		}
 };

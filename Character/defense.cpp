@@ -13,7 +13,7 @@ class Defense
 	
 	public:
 		Defense();
-		Defense()
+		Defense(int hp, float regen, float recov, float def);
 		
 		int getHealthPoints()
 		{
@@ -32,15 +32,21 @@ class Defense
 			return defense;
 		}
 
-		//heals
-		void Heal(int add)
+		//Take & heal methods
+		void TakeDamage(int damage)
 		{
-			healthPoints += add;
-			cout << "You have healed for " << add << " hit points.";
+			healthPoints -= damage;
+			cout << "You have taken " << damage << " damage.";
+		}
+		
+		void Heal(int heals)
+		{
+			healthPoints += heals;
+			cout << "You have healed for " << heals << " hit points.";
 		}
 		void Regenerate()
 		{
-			Heal(regen);
+			Heal(regeneration);
 		}
 
 		//level up methods

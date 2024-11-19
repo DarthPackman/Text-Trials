@@ -12,6 +12,8 @@
 
 // Include Header Files
 #include "Character.h"
+#include "Defense.h"
+#include "Offense.h"
 
 using namespace std;
 
@@ -44,39 +46,42 @@ Character createCharacter()
 
     // Get Character Type from User
     cout << "How do people describe you?" << endl;
-    cout << "Enter Character Type: ";
-    cout << "1. The Unbreakable Sheild - A Higher Defense Adventurer who can brush off more damage." << endl;
+    cout << "Enter Character Type: " << endl;
+    cout << "1. The Unbreakable Shield - A Higher Defense Adventurer who can brush off more damage." << endl;
     cout << "2. The Living Bastion - A Faster Recovery Adventurer who can take a hit and get back into the fight." << endl;
     cout << "3. The Colossal Crusher - A Higher Damage Adventurer who can hit enemies for more damage." << endl;
-    cout << "4. The Blinding Whirlwind - A Faster Cool Down Adventurer who can swing there weapon more often." << endl;
+    cout << "4. The Blinding Whirlwind - A Faster Cool Down Adventurer who can swing their weapon more often." << endl;
     cout << "5. The Immortal Juggernaut - A Higher Health and Regen Adventurer who can take more hits." << endl;
+    
     int type;
     cin >> type;
+    
+    // Create Character Based on Type
     switch (type)
     {
         case 1: // Defense Tank
-            playerCharacter = new Character(name, new Offense(100, 100), new Defense(100, 1, 115, 100));
+            playerCharacter = Character(name, Offense(100, 100), Defense(100, 1, 115, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Unbreakable Shield." << endl;
             break;
         case 2: // Recovery Tank
-            playerCharacter = new Character(name, new Offense(100, 100), new Defense(115, 1, 100, 90));
+            playerCharacter = Character(name, Offense(100, 100), Defense(115, 1, 100, 90));
             cout << "Welcome to the Text Trials, " << name << ", The Living Bastion." << endl;
             break;
         case 3: // Heavy Hitter
-            playerCharacter = new Character(name, new Offense(115, 100), new Defense(100, 1, 100, 100));
+            playerCharacter = Character(name, Offense(115, 100), Defense(100, 1, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Colossal Crusher." << endl;
             break;
         case 4: // Fast Hitter
-            playerCharacter = new Character(name, new Offense(100, 85), new Defense(100, 1, 100, 100));
+            playerCharacter = Character(name, Offense(100, 85), Defense(100, 1, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Blinding Whirlwind." << endl;
             break;
         case 5: // High HP/Regen
-            playerCharacter = new Character(name, new Offense(100, 100), new Defense(110, 1.5, 100, 100));
+            playerCharacter = Character(name, Offense(100, 100), Defense(110, 1.5, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Immortal Juggernaut." << endl;
             break;
         default: // Default
             cout << "Invalid choice. Defaulting to The Average Joe." << endl;
-            playerCharacter = new Character(name, new Offense(105, 100), new Defense(105, 1, 105, 100));
+            playerCharacter = Character(name, Offense(105, 100), Defense(105, 1, 105, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Average Joe." << endl;
             break;
     }
@@ -102,28 +107,28 @@ void equipWeapon(Character& playerCharacter)
     switch (weaponChoice)
     {
         case 1:
-            playerCharacter.weapon = new Weapon("Sword", 1.5, 1);
+            playerCharacter.setWeapon(Weapon("Sword", 1.5, 1));
             cout << "I see you have a sword, a great tool to slash through your enemies." << endl;
             break;
         case 2:
-            playerCharacter.weapon = new Weapon("Axe", 2.0, 1.5);
+            playerCharacter.setWeapon(Weapon("Axe", 2.0, 1.5));
             cout << "I see you have an axe, a mighty weapon to crush your enemies." << endl;
             break;
         case 3:
-            playerCharacter.weapon = new Weapon("Mace", 1.75, 1.25);
+            playerCharacter.setWeapon(Weapon("Mace", 1.75, 1.25));
             cout << "I see you have a mace, a brutal weapon to break your enemies." << endl;
             break;
         case 4:
-            playerCharacter.weapon = new Weapon("Spear", 1.25, 0.75);
+            playerCharacter.setWeapon(Weapon("Spear", 1.25, 0.75));
             cout << "I see you have a spear, a long weapon to keep your enemies at bay." << endl;
             break;
         case 5:
-            playerCharacter.weapon = new Weapon("Dagger", 1.0, 0.5);
+            playerCharacter.setWeapon(Weapon("Dagger", 1.0, 0.5));
             cout << "I see you have a dagger, a swift weapon to strike your enemies." << endl;
             break;
         default:
             cout << "Invalid choice. Defaulting to Stick." << endl;
-            playerCharacter.weapon = new Weapon("Stick", 0.90, 0.40);
+            playerCharacter.setWeapon(Weapon("Stick", 0.90, 0.40));
             cout << "I see you have a stick, I guess that counts as a weapon." << endl;
             break;
     }
@@ -148,28 +153,28 @@ void equipArmour(Character& playerCharacter)
     switch (armourChoice)
     {
         case 1: // Leather Armor (default choice)
-            playerCharacter.armour = new Armour("Leather Armor", 1.5, 1.0);
+            playerCharacter.setArmour(Armour("Leather Armor", 1.5, 1.0));
             cout << "I see you have leather armor, a good balance of protection and mobility." << endl;
             break;
         case 2: // Plate Armor: Higher defense, longer recovery
-            playerCharacter.armour = new Armour("Plate Armor", 2.25, 1.75);
+            playerCharacter.setArmour(Armour("Plate Armor", 2.25, 1.75));
             cout << "I see you have plate armor, a heavy armor that offers excellent protection." << endl;
             break;
         case 3: // Scale Armor: Balanced between protection and recovery
-            playerCharacter.armour = new Armour("Scale Armor", 2.0, 1.5);
+            playerCharacter.setArmour(Armour("Scale Armor", 2.0, 1.5));
             cout << "I see you have scale armor, a sturdy armor that offers a good protection." << endl;
             break;
         case 4: // Chainmail: Good defense, balanced recovery
-            playerCharacter.armour = new Armour("Chainmail", 1.75, 1.25);
+            playerCharacter.setArmour(Armour("Chainmail", 1.75, 1.25));
             cout << "I see you have chainmail, a flexible armor that provides good protection and mobility." << endl;
             break;
         case 5: // Cloth Robes: Low defense, quick recovery
-            playerCharacter.armour = new Armour("Cloth Robes", 1.25, 0.75);
+            playerCharacter.setArmour(Armour("Cloth Robes", 1.25, 0.75));
             cout << "I see you have cloth robes, simple robes that offer minimal protection but allow for quick movement." << endl;
             break;
         default: // Invalid choice, default to Leather Armor
             cout << "Invalid choice. Defaulting to No Clothes." << endl;
-            playerCharacter.armour = new Armour("No Clothes", 0.90, 0.40);
+            playerCharacter.setArmour(Armour("No Clothes", 0.90, 0.40));
             cout << "I see you have no clothes, is the absence of armor a type of armor?" << endl;
             break;
     }
@@ -177,7 +182,7 @@ void equipArmour(Character& playerCharacter)
 
 void goOnJourney(Character& playerCharacter)
 {
-    int levelCount = playerCharacter.level.getLevel();
+    int levelCount = playerCharacter.getLevel().getCurrentLevel();
     cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
     // Create a vector of enemies
     vector<Character> enemies;
@@ -185,72 +190,69 @@ void goOnJourney(Character& playerCharacter)
     enemies.push_back(createEnemy());
 
     // Battle each enemy in the vector
-    for (int i = 0; i < playerCharacter.getLevel(); i++)
+    for (int i = 0; i < levelCount; i++)
     {
         cout << "In room " << i << ", you encounter a " << enemies[i].getName() << "!" << endl;
         battle(playerCharacter, enemies[i]);
     }
     cout << "You have cleared the dungeon and found a chest with a health potion inside." << endl;
-    playerCharacter.defense.heal(getLevel() * 10);
+    playerCharacter.getDefense().Heal(levelCount * 10);
 }
 
 void battle(Character& playerCharacter, Character& Enemy)
 {
-    
+    //Fight the enemy
+    playerCharacter.getLevel().addExp(10, playerCharacter);
 }
 
 Character createEnemy()
 {
-    // Randomly select an enemy type
-    int enemyType = rand(0, 101);
-    switch (enemyType)
+    int enemyType = rand() % 101;
+
+    if (enemyType < 50)
     {
-        case < 50:
-            enemyType = rand(0, 5);
-            switch (enemyType)
-            {
-                case 0:
-                    return new Character("Rat", new Offense(150, 100), new Defense(25, 1, 150, 100));
-                    break;
-                case 1:
-                    return new Character("Bat", new Offense(150, 100), new Defense(25, 1, 150, 100));
-                    break;
-                case 2:
-                    return new Character("Wolf", new Offense(150, 100), new Defense(25, 1, 150, 100));
-                    break;
-                case 3:
-                    return new Character("Spider", new Offense(150, 100), new Defense(25, 1, 150, 100));
-                    break;
-                case 4:
-                    return new Character("Snake", new Offense(150, 100), new Defense(25, 1, 150, 100));
-                    break;
-            }
-            break;
-        case < 75:
-            enemyType = rand(0, 2);
-            switch (enemyType)
-            {
-                case 0:
-                    return new Character("Goblin", new Offense(150, 100), new Defense(50, 1, 150, 100));
-                    break;
-                case 1:
-                    return new Character("Zombie", new Offense(150, 100), new Defense(150, 1, 150, 100));
-                    break;
-            }
-            break;
-        case < 90:
-            return new Character("Orc", new Offense(150, 100), new Defense(105, 1.25, 150, 100));
-            break;
-        case < 95:
-            return new Character("Troll", new Offense(150, 100), new Defense(110, 1.5, 150, 100));
-            break;
-        case < 100:
-            return new Character("Dragon", new Offense(150, 100), new Defense(125, 2, 150, 100));
-            break;
-        case 100:
-            return new Character("Demon", new Offense(150, 100), new Defense(150, 3, 150, 100));
-            break;
-        default:
-            break;
+        int subType = rand() % 5;
+        switch (subType)
+        {
+            case 0:
+                return Character("Rat", Offense(150, 100), Defense(25, 1, 150, 100));
+            case 1:
+                return Character("Bat", Offense(150, 100), Defense(25, 1, 150, 100));
+            case 2:
+                return Character("Wolf", Offense(150, 100), Defense(25, 1, 150, 100));
+            case 3:
+                return Character("Spider", Offense(150, 100), Defense(25, 1, 150, 100));
+            case 4:
+                return Character("Snake", Offense(150, 100), Defense(25, 1, 150, 100));
+        }
     }
+    else if (enemyType < 75)
+    {
+        int subType = rand() % 2;
+        switch (subType)
+        {
+            case 0:
+                return Character("Goblin", Offense(150, 100), Defense(50, 1, 150, 100));
+            case 1:
+                return Character("Zombie", Offense(150, 100), Defense(150, 1, 150, 100));
+        }
+    }
+    else if (enemyType < 90)
+    {
+        return Character("Orc", Offense(150, 100), Defense(105, 1.25, 150, 100));
+    }
+    else if (enemyType < 95)
+    {
+        return Character("Troll", Offense(150, 100), Defense(110, 1.5, 150, 100));
+    }
+    else if (enemyType < 100)
+    {
+        return Character("Dragon", Offense(150, 100), Defense(125, 2, 150, 100));
+    }
+    else if (enemyType == 100)
+    {
+        return Character("Demon", Offense(150, 100), Defense(150, 3, 150, 100));
+    }
+
+    return Character("Mysterious Being", Offense(150, 100), Defense(150, 1, 150, 100));
 }
