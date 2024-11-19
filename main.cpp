@@ -190,8 +190,6 @@ void goOnJourney(Character& playerCharacter)
 {
     int levelCount = playerCharacter.getLevel().getCurrentLevel();
     cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
-    // Create a vector of enemies
-    vector<Character> enemies;
 
     // Battle each enemy in the vector
     for (int i = 0; i < levelCount; i++)
@@ -201,9 +199,8 @@ void goOnJourney(Character& playerCharacter)
         {
             enemy.getLevel().levelUp(enemy);
         }
-        enemies.push_back(enemy);
-        cout << "In room " << i << ", you encounter a " << enemies[i].getName() << "!" << endl;
-        battle(playerCharacter, enemies[i]);
+        cout << "In room " << i << ", you encounter a " << enemy.getName() << "!" << endl;
+        battle(playerCharacter, enemy);
     }
     cout << "You have cleared the "<< levelCount <<" dungeon and found a chest with a health potion inside." << endl;
     playerCharacter.getDefense().Heal(levelCount * 100);
