@@ -51,7 +51,6 @@ Character createCharacter()
     cout << "2. The Living Bastion - A Faster Recovery Adventurer who can take a hit and get back into the fight." << endl;
     cout << "3. The Colossal Crusher - A Higher Damage Adventurer who can hit enemies for more damage." << endl;
     cout << "4. The Blinding Whirlwind - A Faster Cool Down Adventurer who can swing their weapon more often." << endl;
-    cout << "5. The Immortal Juggernaut - A Higher Health and Regen Adventurer who can take more hits." << endl;
     
     int type;
     cin >> type;
@@ -74,10 +73,6 @@ Character createCharacter()
         case 4: // Fast Hitter
             playerCharacter = Character(name, Offense(100, 85), Defense(100, 1, 100, 100));
             cout << "Welcome to the Text Trials, " << name << ", The Blinding Whirlwind." << endl;
-            break;
-        case 5: // High HP/Regen
-            playerCharacter = Character(name, Offense(100, 100), Defense(110, 1.5, 100, 100));
-            cout << "Welcome to the Text Trials, " << name << ", The Immortal Juggernaut." << endl;
             break;
         default: // Default
             cout << "Invalid choice. Defaulting to The Average Joe." << endl;
