@@ -201,7 +201,8 @@ void goOnJourney(Character& playerCharacter)
 
 void battle(Character& playerCharacter, Character& Enemy)
 {
-    //Fight the enemy
+    playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
+    Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1, 0.5), playerCharacter);
     playerCharacter.getLevel().addExp(10, playerCharacter);
 }
 
