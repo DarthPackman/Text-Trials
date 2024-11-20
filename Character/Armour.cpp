@@ -1,55 +1,49 @@
-#include <string>
-using namespace std;
+#include "Armour.h"
 
-class Armour
+// Default Constructor
+Armour::Armour()
 {
-	private:
-		string name;
-		float defenseMod;
-		float recoveryMod;
+    name = "Default Armour";
+    defenseMod = 1.0f;
+    recoveryMod = 1.0f;
+}
 
-	public:
-		// constructors
-		// Default Constructor
-		Armour::Armour()
-		{
-			name = "Default Armour";
-			defenseMod = 1.0f;
-			recoveryMod = 1.0f;
-		}
-		// Parameterized Constructor
-		Armour::Armour(string nm, float dm, float rm)
-		{
-			name = nm;
-			defenseMod = dm;
-			recoveryMod = rm;
-		}
+// Parameterized Constructor
+Armour::Armour(string nm, float dm, float rm)
+{
+    name = nm;
+    defenseMod = dm;
+    recoveryMod = rm;
+}
 
-		// setters
-		void setName(string str)
-		{
-			name = str;
-		}
-		void setDefenseMod(float dm)
-		{
-			defenseMod = dm;
-		}
-		void setRecoveryMod(float rm)
-		{
-			recoveryMod = rm;
-		}
+// Setters
+void Armour::setName(string str)
+{
+    name = str;
+}
 
-		// getters
-		string getName() const
-		{
-			return name;
-		}
-		float getDefenseMod() const
-		{
-			return defenseMod;
-		}
-		float getRecoveryMod() const
-		{
-			return recoveryMod;
-		}
-};
+void Armour::setDefenseMod(float dm)
+{
+    defenseMod = dm;
+}
+
+void Armour::setRecoveryMod(float rm)
+{
+    recoveryMod = rm;
+}
+
+// Getters
+string Armour::getName() const
+{
+    return name;
+}
+
+float Armour::getDefenseMod() const
+{
+    return defenseMod;
+}
+
+float Armour::getRecoveryMod() const
+{
+    return recoveryMod;
+}

@@ -1,35 +1,37 @@
 #include "Offense.h"
 
-#include <string>
-using namespace std;
-
-class Offense
+// Default Constructor
+Offense::Offense()
 {
-	private:
-		float damage;
- 		float coolDown;
- 	
- 	public:
- 		Offense();
- 		Offense(float dam, float cd);
- 		
- 		float getDamage()
-		{
-			return damage;
-		}
+    damage = 100;
+    coolDown = 100;
+}
 
-		float getCoolDown()
-		{
-			return coolDown;
-		}
+// Parameterized Constructor
+Offense::Offense(float dam, float cd)
+{
+    damage = dam;
+    coolDown = cd;
+}
 
-		void levelUpDamage()
-		{
-			damage += 5;
-		}
+// Getters
+float Offense::getDamage()
+{
+    return damage;
+}
 
-		void levelUpCoolDown()
-		{
-			coolDown -= 5;
-		}
-};
+float Offense::getCoolDown()
+{
+    return coolDown;
+}
+
+// Level Up Methods
+void Offense::levelUpDamage()
+{
+    damage += 5;
+}
+
+void Offense::levelUpCoolDown()
+{
+    coolDown -= 5;
+}

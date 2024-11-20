@@ -159,10 +159,12 @@ void equipArmour(Character& playerCharacter)
 
 Character createEnemy()
 {
+    cout << "You have encountered an enemy!" << endl;
     int enemyType = rand() % 101;
 
     if (enemyType < 50)
     {
+        cout << "It's a weak enemy!" << endl;
         int subType = rand() % 5;
         switch (subType)
         {
@@ -180,6 +182,7 @@ Character createEnemy()
     }
     else if (enemyType < 75)
     {
+        cout << "It's a medium enemy!" << endl;
         int subType = rand() % 2;
         switch (subType)
         {
@@ -191,45 +194,69 @@ Character createEnemy()
     }
     else if (enemyType < 90)
     {
+        cout << "It's a strong enemy!" << endl;
         return Character("Orc", Offense(150, 100), Defense(500, 1.25, 150, 100));
     }
     else if (enemyType < 95)
     {
+        cout << "It's a very strong enemy!" << endl;
         return Character("Troll", Offense(150, 100), Defense(750, 1.5, 150, 100));
     }
     else if (enemyType < 100)
     {
+        cout << "It's a boss enemy!" << endl;
         return Character("Dragon", Offense(150, 100), Defense(1000, 2, 150, 100));
     }
     else if (enemyType == 100)
     {
+        cout << "It's a secret enemy!" << endl;
         return Character("Demon", Offense(150, 100), Defense(1500, 3, 150, 100));
     }
 
+    cout << "It's a mysterious enemy!" << endl;
     return Character("Mysterious Being", Offense(150, 100), Defense(2000, 1, 150, 100));
 }
 
 void battle(Character& playerCharacter, Character& Enemy)
 {
-    playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
-    Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1, 0.5), playerCharacter);
-    playerCharacter.addExp(10);
+    bool bothAlive = true;
+    bool playerAlive = true;
+    bool enemyAlive = true;
+    while (bothAlive)
+    {
+        playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
+        if (Enemy.getDefense().getHealthPoints() <= 0)
+        {
+            enemyAlive = false;
+            break;
+        }
+        Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1.0, 1.0), playerCharacter);
+        if (playerCharacter.getDefense().getHealthPoints() <= 0)
+        {
+            playerAlive = false;
+            break;
+        }
+        if (!playerAlive || !enemyAlive)
+        {
+            bothAlive = false;
+        }
+    }
+    playerCharacter.addExp(Enemy.getLevel() * 10);
 }
 
 void goOnJourney(Character& playerCharacter)
 {
     int levelCount = playerCharacter.getLevel();
-    cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
+    cout << "You have found yourself in front of a dungeon with " << levelCount << " room(s)." << endl;
 
-    // Battle each enemy in the vector
     for (int i = 0; i < levelCount; i++)
     {
         Character enemy = createEnemy();
-        for (int i; i < levelCount; i++)
+        cout << "In room " << i << ", you encounter a " << enemy.getName() << "!" << endl;
+        for (int j = 0; j < levelCount; j++)
         {
             enemy.levelUp();
         }
-        cout << "In room " << i << ", you encounter a " << enemy.getName() << "!" << endl;
         battle(playerCharacter, enemy);
     }
     cout << "You have cleared the "<< levelCount <<" dungeon and found a chest with a health potion inside." << endl;

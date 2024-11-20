@@ -1,29 +1,33 @@
 #include "Weapon.h"
-#include <string>
-using namespace std;
 
-class Weapon
+// Default Constructor
+Weapon::Weapon()
 {
-	private:
-		string name;
-		float damageMod;
-		float coolDownMod;
-		
-	public:
-		Weapon();
-		Weapon(string nm, float dm, float cdm);
-		
-		//getters
-		string getName()
-		{
-			return name;
-		}	
-		float getDamageMod()
-		{
-			return damageMod;
-		}
-		float getCoolDownMod()
-		{
-			return coolDownMod;	
-		}
-};
+    name = "Default Weapon";
+    damageMod = 1.0f;
+    coolDownMod = 1.0f;
+}
+
+// Parameterized Constructor
+Weapon::Weapon(string nm, float dm, float cdm)
+{
+    name = nm;
+    damageMod = dm;
+    coolDownMod = cdm;
+}
+
+// Getters
+string Weapon::getName()
+{
+    return name;
+}
+
+float Weapon::getDamageMod()
+{
+    return damageMod;
+}
+
+float Weapon::getCoolDownMod()
+{
+    return coolDownMod;
+}
