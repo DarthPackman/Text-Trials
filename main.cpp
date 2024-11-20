@@ -277,14 +277,21 @@ int main()
     cout << "Good luck and may the odds be ever in your favor." << endl;
     goOnJourney(playerCharacter);
     // Ask if the player wants to go on another journey
-    cout << "Would you like to go on another journey?" << endl;
-    cout << "1. Yes" << endl;
-    cout << "2. No" << endl;
-    int choice;
-    cin >> choice;
-    if (choice == 1)
+    while (true)
     {
-        goOnJourney(playerCharacter);
+        cout << "Would you like to go on another journey?" << endl;
+        cout << "1. Yes" << endl;
+        cout << "2. No" << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 1)
+        {
+            goOnJourney(playerCharacter);
+        }
+        else
+        {
+            break;
+        }
     }
     cout << "Thank you for playing the Text Trials, we hope you enjoyed your adventure." << endl;
     return 0;
