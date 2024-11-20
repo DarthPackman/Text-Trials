@@ -40,7 +40,7 @@ class Character
         Armour getArmour();
 
         // Combat Methods
-        void Attack(Offense off, Weapon wep, Character target);
+        void Attack(Offense off, Weapon wep, Character& target);
         void Defend(int damage);
 
         // Experience Methods

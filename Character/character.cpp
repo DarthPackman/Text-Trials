@@ -85,7 +85,7 @@ Armour Character::getArmour()
 }
 
 // Combat Methods
-void Character::Attack(Offense off, Weapon wep, Character target)
+void Character::Attack(Offense off, Weapon wep, Character& target)
 {
     int damageToDeal = off.getDamage() * wep.getDamageMod();
 	cout << name << " has attacked for " << damageToDeal << " damage." << endl;
