@@ -1,8 +1,5 @@
 #include "AttackState.h"
 
-
-
-
 void AttackState::Enter()
 {
     

@@ -17,19 +17,6 @@ class DefendState : public CharacterState {
 
     virtual void Exit();
 
- public:
-
-    /**
-     * @element-type AttackStae
-     */
-    AttackStae *myAttackStae;
-
-    /**
-     * @element-type IdleState
-     */
-    IdleState *myIdleState;
-
-    Character *myCharacter;
 };
 
 #endif // DefendState_h

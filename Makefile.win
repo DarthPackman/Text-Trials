@@ -1,0 +1,55 @@
+# Project: Text-Trials
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o States/attackState.o States/CharacterState.o States/defendState.o States/idleState.o Character/Armour.o Character/character.o Character/defense.o Character/offense.o Character/weapon.o
+LINKOBJ  = main.o States/attackState.o States/CharacterState.o States/defendState.o States/idleState.o Character/Armour.o Character/character.o Character/defense.o Character/offense.o Character/weapon.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Text-Trials.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+States/attackState.o: States/attackState.cpp
+	$(CPP) -c States/attackState.cpp -o States/attackState.o $(CXXFLAGS)
+
+States/CharacterState.o: States/CharacterState.cpp
+	$(CPP) -c States/CharacterState.cpp -o States/CharacterState.o $(CXXFLAGS)
+
+States/defendState.o: States/defendState.cpp
+	$(CPP) -c States/defendState.cpp -o States/defendState.o $(CXXFLAGS)
+
+States/idleState.o: States/idleState.cpp
+	$(CPP) -c States/idleState.cpp -o States/idleState.o $(CXXFLAGS)
+
+Character/Armour.o: Character/Armour.cpp
+	$(CPP) -c Character/Armour.cpp -o Character/Armour.o $(CXXFLAGS)
+
+Character/character.o: Character/character.cpp
+	$(CPP) -c Character/character.cpp -o Character/character.o $(CXXFLAGS)
+
+Character/defense.o: Character/defense.cpp
+	$(CPP) -c Character/defense.cpp -o Character/defense.o $(CXXFLAGS)
+
+Character/offense.o: Character/offense.cpp
+	$(CPP) -c Character/offense.cpp -o Character/offense.o $(CXXFLAGS)
+
+Character/weapon.o: Character/weapon.cpp
+	$(CPP) -c Character/weapon.cpp -o Character/weapon.o $(CXXFLAGS)

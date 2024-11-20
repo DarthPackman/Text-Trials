@@ -3,11 +3,6 @@
 
 #include "CharacterState.h"
 
-
-class IdleState;
-class DefendState;
-class Character;
-
 class AttackState : public CharacterState {
 
  public:
@@ -18,24 +13,7 @@ class AttackState : public CharacterState {
 
     virtual void Exit();
 
- public:
-
-    /**
-     * @element-type IdleState
-     */
-    IdleState *myIdleState;
-
-    /**
-     * @element-type DefendState
-     */
-    DefendState *myDefendState;
-
-    Character *myCharacter;
-
-    /**
-     * @element-type IdleState
-     */
-    IdleState *myIdleState;
+    
 };
 
 #endif // AttackState_h

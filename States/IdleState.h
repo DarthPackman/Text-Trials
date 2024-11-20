@@ -2,13 +2,9 @@
 #define IdleState_h
 
 #include "CharacterState.h"
-#include "void.h"
 
-class AttackState;
-class DefendState;
-class Character;
-
-class IdleState : public CharacterState {
+class IdleState : public CharacterState
+{
 
  public:
 
@@ -18,24 +14,7 @@ class IdleState : public CharacterState {
 
     virtual void Exit();
 
- public:
 
-    /**
-     * @element-type AttackState
-     */
-    AttackStae *myAttackState;
-
-    /**
-     * @element-type DefendState
-     */
-    DefendState *myDefendState;
-
-    /**
-     * @element-type AttackState
-     */
-    AttackStae *myAttackState;
-
-    Character *myCharacter;
 };
 
 #endif // IdleState_h

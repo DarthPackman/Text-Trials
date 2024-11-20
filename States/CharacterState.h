@@ -1,28 +1,25 @@
 #ifndef CharacterState_h
 #define CharacterState_h
 
-#include <vector>
-
 #include "State.h"
 
-class Character;
+#include "..\Character\Character.h"
 
-class CharacterState : {
+class CharacterState 
+{
 
- public:
+	private:
+		
+		Character* myCharacter;
 
-    virtual void Enter();
+	public:
 
-    virtual void Tick();
+    	virtual void Enter();
 
-    virtual void Exit();
+    	virtual void Tick();
 
- public:
+    	virtual void Exit();
 
-    /**
-     * @element-type Character
-     */
-    std::vector< Character* > myCharacter;
 };
 
 #endif // CharacterState_h
