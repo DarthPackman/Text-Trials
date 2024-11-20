@@ -1,4 +1,4 @@
-#include "Defense.h"
+#include <iostream>
 
 #include <string>
 using namespace std;
@@ -13,8 +13,22 @@ class Defense
 		float defense;
 	
 	public:
-		Defense();
-		Defense(int hp, float regen, float recov, float def);
+		Defense()
+		{
+			currentHealthPoints = 500;
+			maxHealthPoints = 500;
+			regeneration = 1;
+			recovery = 100;
+			defense = 100;
+		}
+		Defense(int hp, float regen, float recov, float def)
+		{
+			currentHealthPoints = hp;
+			maxHealthPoints = hp;
+			regeneration = regen;
+			recovery = recov;
+			defense = def;
+		}
 		
 		int getHealthPoints()
 		{
@@ -61,19 +75,19 @@ class Defense
 		//level up methods
 		void levelUpHealthPoints()
 		{
-	
+			maxHealthPoints += 25;
 		}
 		void levelUpRegeneration()
 		{
-	
+			regeneration += 1;
 		}
 		void levelUpRecovery()
 		{
-	
+			recovery -= 5;
 		}
 		void levelUpDefense()
 		{
-	
+			defense += 5;
 		}
 		
 };

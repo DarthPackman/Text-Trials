@@ -1,4 +1,3 @@
-#include "Armour.h"
 #include <string>
 using namespace std;
 
@@ -11,9 +10,21 @@ class Armour
 
 	public:
 		// constructors
-		Armour();
-		Armour(string nm, float dm, float rm);
-		
+		// Default Constructor
+		Armour::Armour()
+		{
+			name = "Default Armour";
+			defenseMod = 1.0f;
+			recoveryMod = 1.0f;
+		}
+		// Parameterized Constructor
+		Armour::Armour(string nm, float dm, float rm)
+		{
+			name = nm;
+			defenseMod = dm;
+			recoveryMod = rm;
+		}
+
 		// setters
 		void setName(string str)
 		{
@@ -29,15 +40,15 @@ class Armour
 		}
 
 		// getters
-		string getName()
+		string getName() const
 		{
 			return name;
 		}
-		float getDefenseMod()
+		float getDefenseMod() const
 		{
 			return defenseMod;
 		}
-		float getRecoveryMod()
+		float getRecoveryMod() const
 		{
 			return recoveryMod;
 		}

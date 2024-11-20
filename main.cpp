@@ -11,38 +11,9 @@
 #include <vector>
 
 // Include Header Files
-#include "Character.h"
-#include "Defense.h"
-#include "Offense.h"
+#include "Character/Character.h"
 
 using namespace std;
-
-// Main Method
-int main() 
-{
-    //A Flavorful Welcome Message
-    cout << "Welcome to the Text Trials, who knows where your adventure might lead." << endl;
-    // Create Character
-    Character playerCharacter = createCharacter();
-    equipWeapon(playerCharacter);
-    equipArmour(playerCharacter);
-    // Start The Journey
-    cout << "You are now ready to begin your journey, " << playerCharacter.getName() << "." << endl;
-    cout << "Good luck and may the odds be ever in your favor." << endl;
-    goOnJourney(playerCharacter);
-    // Ask if the player wants to go on another journey
-    cout << "Would you like to go on another journey?" << endl;
-    cout << "1. Yes" << endl;
-    cout << "2. No" << endl;
-    int choice;
-    cin >> choice;
-    if (choice == 1)
-    {
-        goOnJourney(playerCharacter);
-    }
-    cout << "Thank you for playing the Text Trials, we hope you enjoyed your adventure." << endl;
-    return 0;
-}
 
 Character createCharacter()
 {
@@ -186,33 +157,6 @@ void equipArmour(Character& playerCharacter)
     }
 }
 
-void goOnJourney(Character& playerCharacter)
-{
-    int levelCount = playerCharacter.getLevel().getCurrentLevel();
-    cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
-
-    // Battle each enemy in the vector
-    for (int i = 0; i < levelCount; i++)
-    {
-        Character enemy = createEnemy();
-        for (int i; i < levelCount; i++)
-        {
-            enemy.getLevel().levelUp(enemy);
-        }
-        cout << "In room " << i << ", you encounter a " << enemy.getName() << "!" << endl;
-        battle(playerCharacter, enemy);
-    }
-    cout << "You have cleared the "<< levelCount <<" dungeon and found a chest with a health potion inside." << endl;
-    playerCharacter.getDefense().Heal(levelCount * 100);
-}
-
-void battle(Character& playerCharacter, Character& Enemy)
-{
-    playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
-    Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1, 0.5), playerCharacter);
-    playerCharacter.getLevel().addExp(10, playerCharacter);
-}
-
 Character createEnemy()
 {
     int enemyType = rand() % 101;
@@ -263,4 +207,58 @@ Character createEnemy()
     }
 
     return Character("Mysterious Being", Offense(150, 100), Defense(2000, 1, 150, 100));
+}
+
+void battle(Character& playerCharacter, Character& Enemy)
+{
+    playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
+    Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1, 0.5), playerCharacter);
+    playerCharacter.addExp(10);
+}
+
+void goOnJourney(Character& playerCharacter)
+{
+    int levelCount = playerCharacter.getLevel();
+    cout << "You have found yourself in front of a dungeon with " << levelCount << "rooms." << endl;
+
+    // Battle each enemy in the vector
+    for (int i = 0; i < levelCount; i++)
+    {
+        Character enemy = createEnemy();
+        for (int i; i < levelCount; i++)
+        {
+            enemy.levelUp();
+        }
+        cout << "In room " << i << ", you encounter a " << enemy.getName() << "!" << endl;
+        battle(playerCharacter, enemy);
+    }
+    cout << "You have cleared the "<< levelCount <<" dungeon and found a chest with a health potion inside." << endl;
+    playerCharacter.getDefense().Heal(levelCount * 100);
+}
+
+// Main Method
+int main() 
+{
+    //A Flavorful Welcome Message
+    cout << "Welcome to the Text Trials, who knows where your adventure might lead." << endl;
+    // Create Character
+    Character playerCharacter = createCharacter();
+    equipWeapon(playerCharacter);
+    equipArmour(playerCharacter);
+    // Start The Journey
+    cout << "You are now ready to begin your journey, " << playerCharacter.getName() << "." << endl;
+    cout << "Good luck and may the odds be ever in your favor." << endl;
+    goOnJourney(playerCharacter);
+    // Ask if the player wants to go on another journey
+    cout << "Would you like to go on another journey?" << endl;
+    cout << "1. Yes" << endl;
+    cout << "2. No" << endl;
+    int choice;
+    cin >> choice;
+    if (choice == 1)
+    {
+        goOnJourney(playerCharacter);
+    }
+    cout << "Thank you for playing the Text Trials, we hope you enjoyed your adventure." << endl;
+    return 0;
 }

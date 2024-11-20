@@ -25,11 +25,11 @@ class Offense
 
 		void levelUpDamage()
 		{
-	
+			damage += 5;
 		}
 
 		void levelUpCoolDown()
 		{
-	
+			coolDown -= 5;
 		}
 };
