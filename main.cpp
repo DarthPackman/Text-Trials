@@ -227,12 +227,14 @@ void battle(Character& playerCharacter, Character& Enemy)
         playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
         if (Enemy.getDefense().getHealthPoints() <= 0)
         {
+            cout << "You have defeated the " << Enemy.getName() << "!" << endl;
             enemyAlive = false;
             break;
         }
         Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1.0, 1.0), playerCharacter);
         if (playerCharacter.getDefense().getHealthPoints() <= 0)
         {
+            cout << "You have been defeated by the " << Enemy.getName() << "!" << endl;
             playerAlive = false;
             break;
         }
