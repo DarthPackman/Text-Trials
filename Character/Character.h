@@ -25,14 +25,14 @@ class Character
         int level;
         int experience;
         int nextLevel;
-        
-        //CharacterState* state;
+        bool isDead;
 
     public:
         // Constructors
         Character();
         Character(string nm, Offense off, Defense def, Weapon wep, Armour arm);
         Character(string nm, Offense off, Defense def);
+        ~Character();
 
         // Setters
         void setName(string str);
