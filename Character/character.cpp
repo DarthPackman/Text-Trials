@@ -108,7 +108,7 @@ void Character::Defend(int damage)
 	if (defense.getHealthPoints() <= 0)
 	{
 		cout << name << " has been defeated." << endl;
-		this.isDead = true;
+		(*this).isDead = true;
 	}
 }
 

@@ -6,10 +6,7 @@
 #include "Offense.h"
 #include "Weapon.h"
 
-#include "CharacterState.h"
-#include "AttackState.h"
-#include "IdleState.h"
-#include "DefendState.h"
+#include "..\States\CharacterState.h"
 
 #include <string>
 using namespace std;
