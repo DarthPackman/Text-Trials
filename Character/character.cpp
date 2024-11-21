@@ -14,6 +14,7 @@ Character::Character()
     level = 1;
     experience = 0;
     nextLevel = 100;
+    isDead = false;
 }
 
 // Parameterized Constructor
@@ -27,6 +28,7 @@ Character::Character(string nm, Offense off, Defense def, Weapon wep, Armour arm
     level = 1;
     experience = 0;
     nextLevel = 100;
+    isDead = false;
 }
 
 // Simplified Constructor
@@ -41,6 +43,8 @@ Character::Character(string nm, Offense off, Defense def)
     experience = 0;
     nextLevel = 100;
 }
+
+Character::~Character(){}
 
 // Setters
 void Character::setName(string str)
@@ -95,11 +99,16 @@ void Character::Attack(Offense off, Weapon wep, Character& target)
 void Character::Defend(int damage)
 {
     int damageToTake = damage - (defense.getDefense() * armour.getDefenseMod());
+    if (damageToTake < 0)
+    {
+    	damageToTake = 0;
+	}
+	defense.TakeDamage(damageToTake);
 	cout << name << " has taken " << damage << " damage." << endl;
-    defense.TakeDamage(damageToTake);
 	if (defense.getHealthPoints() <= 0)
 	{
 		cout << name << " has been defeated." << endl;
+		this.isDead = true;
 	}
 }
 
