@@ -5,11 +5,11 @@ class State {
 
  public:
 
-    virtual void Enter();
+    virtual void Enter() = 0;
 
-    virtual void Tick();
+    virtual void Tick() = 0;
 
-    virtual void Exit();
+    virtual void Exit() = 0;
 
     // virtual destructor for interface 
     virtual ~State() { }

@@ -6,10 +6,10 @@
 #include "Offense.h"
 #include "Weapon.h"
 
-#include "..\States\CharacterState.h"
-#include "..\States\AttackState.h"
-#include "..\States\IdleState.h"
-#include "..\States\DefendState.h"
+#include "CharacterState.h"
+#include "AttackState.h"
+#include "IdleState.h"
+#include "DefendState.h"
 
 #include <string>
 using namespace std;
@@ -25,6 +25,8 @@ class Character
         int level;
         int experience;
         int nextLevel;
+        
+        //CharacterState* state;
 
     public:
         // Constructors
@@ -52,6 +54,7 @@ class Character
         void addExp(int exp);
         void levelUp();
 		int getLevel();
+		
 };
 
 #endif // CHARACTER_H

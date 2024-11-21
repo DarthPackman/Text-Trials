@@ -3,7 +3,10 @@
 
 #include "CharacterState.h"
 
-class AttackState : public CharacterState {
+class Character;
+
+class AttackState : public CharacterState 
+{
 
  public:
 

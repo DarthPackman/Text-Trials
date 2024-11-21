@@ -3,6 +3,8 @@
 
 #include "CharacterState.h"
 
+class Character;
+
 class IdleState : public CharacterState
 {
 

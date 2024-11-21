@@ -3,14 +3,16 @@
 
 #include "State.h"
 
-#include "..\Character\Character.h"
+#include "Character.h"
 
-class CharacterState 
+class Character;
+
+class CharacterState : public State 
 {
 
-	private:
+	//private:
 		
-		Character* myCharacter;
+		//Character* myCharacter;
 
 	public:
 

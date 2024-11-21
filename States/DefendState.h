@@ -3,11 +3,10 @@
 
 #include "CharacterState.h"
 
-class AttackState;
-class IdleState;
 class Character;
 
-class DefendState : public CharacterState {
+class DefendState : public CharacterState 
+{
 
  public:
 
