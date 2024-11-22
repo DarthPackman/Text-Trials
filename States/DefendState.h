@@ -5,10 +5,12 @@
 
 class Character;
 
-class DefendState : public CharacterState 
+class DefendState : protected CharacterState 
 {
 
  public:
+ 	
+ 	using CharacterState::CharacterState;
 
     virtual void Enter();
 

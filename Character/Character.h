@@ -11,6 +11,8 @@
 #include <string>
 using namespace std;
 
+class CharacterState;//Forward declaration
+
 class Character
 {
     private:
@@ -23,6 +25,9 @@ class Character
         int experience;
         int nextLevel;
         bool isDead;
+        
+        CharacterState *myState;
+        float tickCount;//holds value being decremented to control states, set to a variety of values based on character
 
     public:
         // Constructors
@@ -51,6 +56,12 @@ class Character
         void addExp(int exp);
         void levelUp();
 		int getLevel();
+		
+		//State Control Methods
+		void setState(CharacterState *newState);
+		CharacterState* getState(); //returns pointer to state object
+		void setTick(float inTick);//Sets value for tickCount
+		float getTick();//gets value for tickCount
 		
 };
 

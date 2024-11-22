@@ -173,3 +173,23 @@ int Character::getLevel()
 {
     return level;
 }
+
+//State control methods
+void Character::setState(CharacterState *newState)
+{
+	myState = newState;
+}
+
+CharacterState* Character::getState() //returns pointer to state object
+{
+	return myState;		
+}
+
+void Character::setTick(float inTick)//Sets value for tickCount
+{
+	tickCount = inTick;
+}	
+float Character::getTick()//gets value for tickCount
+{
+	return tickCount;
+}

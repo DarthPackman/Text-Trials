@@ -5,11 +5,13 @@
 
 class Character;
 
-class IdleState : public CharacterState
+class IdleState : protected CharacterState
 {
 
  public:
 
+	using CharacterState::CharacterState;
+	
     virtual void Enter();
 
     virtual void Tick();
