@@ -13,6 +13,12 @@
 // Include Header Files
 #include "Character/Character.h"
 
+//Include State Machine
+#include "States/CharacterState.h"
+#include "States/IdleState.h"
+#include "States/DefendState.h"
+#include "States/AttackState.h"
+
 using namespace std;
 
 Character createCharacter()
@@ -274,6 +280,15 @@ int main()
     Character playerCharacter = createCharacter();
     equipWeapon(playerCharacter);
     equipArmour(playerCharacter);
+    //create static states for player (static to save exec time)
+    static IdleState pcIdle = IdleState(&playerCharacter);
+	static AttackState pcAttack = AttackState(&playerCharacter);
+	static DefendState pcDefend = DefendState(&playerCharacter);
+	
+	//set idle state for player
+	playerCharacter.setState(&pcIdle);
+	(*playerCharacter.getState()).Enter();
+    
     // Start The Journey
     cout << "You are now ready to begin your journey, " << playerCharacter.getName() << "." << endl;
     cout << "Good luck and may the odds be ever in your favor." << endl;

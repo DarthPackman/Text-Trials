@@ -14,7 +14,7 @@ class CharacterState //: public State
 
 	protected:
 		
-		Character *myCharacter;//used to reference the character that holds this state
+		Character* myCharacter;//used to reference the character that holds this state
 
 	public:
 		

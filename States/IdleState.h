@@ -5,7 +5,7 @@
 
 class Character;
 
-class IdleState : protected CharacterState
+class IdleState : public CharacterState
 {
 
  public:
