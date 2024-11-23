@@ -334,8 +334,11 @@ void goOnJourney(Character& playerCharacter)
         }
         battle(playerCharacter, enemy);
     }
-    cout << "You have cleared the "<< levelCount <<" dungeon and found a chest with a health potion inside." << endl;
-    playerCharacter.getDefense().Heal(levelCount * 100);
+    if (playerCharacter.getAlive())
+    {
+        cout << "Congratulations! You have cleared the" << levelCount <<" dungeon and found a chest with a health potion inside." << endl;
+        playerCharacter.getDefense().Heal(levelCount * 100);
+    }
 }
 
 // Main Method
