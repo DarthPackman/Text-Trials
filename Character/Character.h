@@ -26,7 +26,7 @@ class Character
         int nextLevel;
         bool isDead;
         
-        Character *target;
+        //Character *target;
         CharacterState *myState;
         float tickCount;//holds value being decremented to control states, set to a variety of values based on character
 
@@ -65,9 +65,6 @@ class Character
 		void setTick(float inTick);//Sets value for tickCount
 		float getTick();//gets value for tickCount
 		
-		//Target Control Methods
-		void setTarget(Character *inTarget);
-		Character& getTarget();
 		
 };
 

@@ -199,14 +199,4 @@ float Character::getTick()//gets value for tickCount
 	return tickCount;
 }
 
-//Target Control Methods
-void Character::setTarget(Character *inTarget)
-{
-	target = inTarget;
-}
-
-Character& Character::getTarget()
-{
-	return target;
-}
 

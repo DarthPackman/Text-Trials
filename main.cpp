@@ -262,7 +262,7 @@ void battle(Character& playerCharacter, Character& Enemy)
 			
 			//player enters attackState
 			playerCharacter.setState(&pcAttack);
-			(*(playerCharacter.getState())).Enter();
+			(*(dynamic_cast<AttackState*>(playerCharacter.getState()))).Enter(Enemy);//must force a downcast and dereference to get the proper entry function
 			
 			//both parties exit
 			(*(playerCharacter.getState())).Exit();
@@ -276,7 +276,7 @@ void battle(Character& playerCharacter, Character& Enemy)
 			playerCharacter.setState(&pcIdle);
 			(*(playerCharacter.getState())).Enter();
 		}
-		else if (Enemy.getTick() == 0 )
+		else if (Enemy.getTick() == 0 )//enemy attacks first
 		{
 			(*(playerCharacter.getState())).Exit();
     		(*(Enemy.getState())).Exit();
@@ -287,7 +287,7 @@ void battle(Character& playerCharacter, Character& Enemy)
 			
 			//enemy enters attackState
 			Enemy.setState(&enmAttack);
-			(*(Enemy.getState())).Enter();
+			(*(dynamic_cast<AttackState*>(Enemy.getState()))).Enter(playerCharacter);
 			
 			//both parties exit
 			(*(playerCharacter.getState())).Exit();

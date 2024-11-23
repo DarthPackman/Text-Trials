@@ -1,9 +1,9 @@
 #include "AttackState.h"
 
-void AttackState::Enter()
+void AttackState::Enter(Character& target)
 {
-        std::cout << (*myCharacter).getName() << "is now Attacking" << std::endl;
-        (*myCharacter).Attack((*myCharacter).getOffense(), (*myCharacter).getWeapon(), (*myCharacter).getTarget());
+	std::cout << (*myCharacter).getName() << " is now Attacking" << std::endl;
+    (*myCharacter).Attack((*myCharacter).getOffense(), (*myCharacter).getWeapon(), target);//attacks immediately on entry
 }
 
 void AttackState::Tick()
@@ -13,5 +13,5 @@ void AttackState::Tick()
 
 void AttackState::Exit()
 {
-    (*myCharacter).setTick((*myCharacter).getOffense().getCoolDown());
+    (*myCharacter).setTick((*myCharacter).getOffense().getCoolDown());//sets to attack cooldown
 }

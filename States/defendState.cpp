@@ -2,7 +2,7 @@
 
 void DefendState::Enter()
 {
-    std::cout << (*myCharacter).getName() << "is now Defending" << std::endl;
+    std::cout << (*myCharacter).getName() << " is now Defending" << std::endl;
 }
 
 void DefendState::Tick()

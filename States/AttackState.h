@@ -12,7 +12,7 @@ class AttackState : public CharacterState
  	
  	using CharacterState::CharacterState;
 
-    virtual void Enter();// the only one that needs a parameter due to needing to point attack at a target
+    virtual void Enter(Character& target);// the only one that needs a parameter due to needing to point attack at a target
 
     virtual void Tick();
 

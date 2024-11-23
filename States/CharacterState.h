@@ -3,13 +3,11 @@
 
 #include <iostream>
 
-//#include "State.h"
-
 #include "..\Character\Character.h"
 
 class Character;
 
-class CharacterState //: public State
+class CharacterState
 {
 
 	protected:
