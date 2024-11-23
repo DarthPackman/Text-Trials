@@ -5,7 +5,7 @@
 
 void IdleState::Enter()
 {
-    std::cout << (*myCharacter).getName() << "is now Idling";
+    //std::cout << (*myCharacter).getName() << "is now Idling";
 }
 
 void IdleState::Tick()

@@ -21,6 +21,11 @@
 
 using namespace std;
 
+//create static states for player (static to save exec time)
+static IdleState pcIdle;
+static AttackState pcAttack;
+static DefendState pcDefend;
+
 Character createCharacter()
 {
     Character playerCharacter;
@@ -225,31 +230,93 @@ Character createEnemy()
 
 void battle(Character& playerCharacter, Character& Enemy)
 {
-    bool bothAlive = true;
-    bool playerAlive = true;
-    bool enemyAlive = true;
-    while (bothAlive)
+	//creation of state objects for enemy, should not persist between encounters
+    IdleState enmIdle = IdleState(&Enemy);
+	AttackState enmAttack = AttackState(&Enemy);
+	DefendState enmDefend = DefendState(&Enemy);
+	
+	//sets enemy state to idle
+	Enemy.setState(&enmIdle);
+	(*(Enemy.getState())).Enter();
+	
+	//player and enemy start based on their respective recovery stats
+	//the one with a faster recovery will act first
+	playerCharacter.setTick(playerCharacter.getDefense().getRecovery());
+	Enemy.setTick(Enemy.getDefense().getRecovery());
+	
+    while (!(playerCharacter.getAlive()) && !(Enemy.getAlive()))
     {
-        playerCharacter.Attack(playerCharacter.getOffense(), playerCharacter.getWeapon(), Enemy);
-        if (Enemy.getDefense().getHealthPoints() <= 0)
-        {
-            cout << "You have defeated the " << Enemy.getName() << "!" << endl;
-            enemyAlive = false;
-            break;
-        }
-        Enemy.Attack(Enemy.getOffense(), Weapon("Default", 1.0, 1.0), playerCharacter);
-        if (playerCharacter.getDefense().getHealthPoints() <= 0)
-        {
-            cout << "You have been defeated by the " << Enemy.getName() << "!" << endl;
-            playerAlive = false;
-            break;
-        }
-        if (!playerAlive || !enemyAlive)
-        {
-            bothAlive = false;
-        }
+    	//Both parties decrement tick value
+    	(*(playerCharacter.getState())).Tick();
+    	(*(Enemy.getState())).Tick();
+    	
+    	//player has slight advantage, evaluating first and winning ties if speeds are equal
+    	if (playerCharacter.getTick() == 0)//player is attacking
+    	{
+    		(*(playerCharacter.getState())).Exit();
+    		(*(Enemy.getState())).Exit();
+    		
+    		//enemy enters defendState
+    		Enemy.setState(&enmDefend);
+			(*(Enemy.getState())).Enter();
+			
+			//player enters attackState
+			playerCharacter.setState(&pcAttack);
+			(*(playerCharacter.getState())).Enter();
+			
+			//both parties exit
+			(*(playerCharacter.getState())).Exit();
+    		(*(Enemy.getState())).Exit();
+    		
+    		//enemy enters idleState
+    		Enemy.setState(&enmIdle);
+			(*(Enemy.getState())).Enter();
+			
+			//player enters idleState
+			playerCharacter.setState(&pcIdle);
+			(*(playerCharacter.getState())).Enter();
+		}
+		else if (Enemy.getTick() == 0 )
+		{
+			(*(playerCharacter.getState())).Exit();
+    		(*(Enemy.getState())).Exit();
+    		
+    		//player enters defendState
+    		playerCharacter.setState(&pcDefend);
+			(*(playerCharacter.getState())).Enter();
+			
+			//enemy enters attackState
+			Enemy.setState(&enmAttack);
+			(*(Enemy.getState())).Enter();
+			
+			//both parties exit
+			(*(playerCharacter.getState())).Exit();
+    		(*(Enemy.getState())).Exit();
+    		
+    		//enemy enters idleState
+    		Enemy.setState(&enmIdle);
+			(*(Enemy.getState())).Enter();
+			
+			//player enters idleState
+			playerCharacter.setState(&pcIdle);
+			(*(playerCharacter.getState())).Enter();
+		}
+    	
+    	if (playerCharacter.getAlive())//checks if the player is dead
+    	{
+    		cout << "You have been defeated by the " << Enemy.getName() << "!" << endl;
+    		break;
+		}
+		
+		if (Enemy.getAlive()) //checks if enemy is dead
+		{
+			cout << "You have defeated the " << Enemy.getName() << "!" << endl;
+			playerCharacter.addExp(Enemy.getLevel() * 10);
+			break;
+			
+		}
     }
-    playerCharacter.addExp(Enemy.getLevel() * 10);
+    
 }
 
 void goOnJourney(Character& playerCharacter)
@@ -280,10 +347,10 @@ int main()
     Character playerCharacter = createCharacter();
     equipWeapon(playerCharacter);
     equipArmour(playerCharacter);
-    //create static states for player (static to save exec time)
-    static IdleState pcIdle = IdleState(&playerCharacter);
-	static AttackState pcAttack = AttackState(&playerCharacter);
-	static DefendState pcDefend = DefendState(&playerCharacter);
+    //assign static states for player
+	pcIdle = IdleState(&playerCharacter);
+	pcAttack = AttackState(&playerCharacter);
+	pcDefend = DefendState(&playerCharacter);
 	
 	//set idle state for player
 	playerCharacter.setState(&pcIdle);

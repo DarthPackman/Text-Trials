@@ -1,5 +1,10 @@
 #include "CharacterState.h"
 
+CharacterState::CharacterState()
+{
+	
+}
+
 CharacterState::CharacterState(Character *inCharacter)
 {
 	myCharacter = inCharacter;//holds reference to assigned character

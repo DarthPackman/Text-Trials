@@ -26,6 +26,7 @@ class Character
         int nextLevel;
         bool isDead;
         
+        Character *target;
         CharacterState *myState;
         float tickCount;//holds value being decremented to control states, set to a variety of values based on character
 
@@ -47,6 +48,7 @@ class Character
         Defense getDefense();
         Weapon getWeapon();
         Armour getArmour();
+        bool getAlive();
 
         // Combat Methods
         void Attack(Offense off, Weapon wep, Character& target);
@@ -62,6 +64,10 @@ class Character
 		CharacterState* getState(); //returns pointer to state object
 		void setTick(float inTick);//Sets value for tickCount
 		float getTick();//gets value for tickCount
+		
+		//Target Control Methods
+		void setTarget(Character *inTarget);
+		Character& getTarget();
 		
 };
 

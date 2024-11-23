@@ -1,9 +1,9 @@
 #include "AttackState.h"
 
-void AttackState::Enter(Character &target)
+void AttackState::Enter()
 {
-        std::cout << (*myCharacter).getName() << "is now Attacking";
-        (*myCharacter).Attack((*myCharacter).getOffense(), (*myCharacter).getWeapon(), target);
+        std::cout << (*myCharacter).getName() << "is now Attacking" << std::endl;
+        (*myCharacter).Attack((*myCharacter).getOffense(), (*myCharacter).getWeapon(), (*myCharacter).getTarget());
 }
 
 void AttackState::Tick()

@@ -18,6 +18,8 @@ class CharacterState //: public State
 
 	public:
 		
+		CharacterState();
+		
 		CharacterState(Character *inCharacter);//State should not be used without referencing a character
 
     	virtual void Enter();//Should be called immediately after updating the state of a given character to the given state
