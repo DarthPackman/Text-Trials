@@ -109,7 +109,7 @@ void Character::Defend(int damage)
     	damageToTake = 0;
 	}
 	defense.TakeDamage(damageToTake);
-	cout << name << " has taken " << damage << " damage." << endl;
+	cout << name << " has taken " << damageToTake << " damage." << endl;
 	if (defense.getHealthPoints() <= 0)
 	{
 		cout << name << " has been defeated." << endl;
